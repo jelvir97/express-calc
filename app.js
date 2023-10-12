@@ -9,7 +9,6 @@ app.get('/mean', (req,res,next)=>{
         if(!req.query.nums) throw new ExpressError(`nums are required`,400)
         const nums = req.query.nums.split(',')
         for(let x in nums){
-            console.log(nums[x])
             if(isNaN(nums[x])){
                 throw new ExpressError(`${nums[x]} is not a valid number`,400)
             }
@@ -30,7 +29,6 @@ app.get('/median',(req,res,next)=>{
         if(!req.query.nums) throw new ExpressError(`nums are required`,400)
         const nums = req.query.nums.split(',')
         for(let x in nums){
-            console.log(nums[x])
             if(isNaN(nums[x])){
                 throw new ExpressError(`${nums[x]} is not a valid number`,400)
             }
@@ -51,7 +49,6 @@ app.get('/mode',(req,res,next)=>{
         if(!req.query.nums) throw new ExpressError(`nums are required`,400)
         const nums = req.query.nums.split(',')
         for(let x in nums){
-            console.log(nums[x])
             if(isNaN(nums[x])){
                 throw new ExpressError(`${nums[x]} is not a valid number`,400)
             }

@@ -10,7 +10,7 @@ function mean(nums){
 
 function median(nums){
     if(nums.length%2 ==0){
-        return(nums[Math.floor(nums.length/2)] + nums[Math.floor(nums.length/2)+1]) / 2
+        return(nums[Math.floor(nums.length/2) -1 ] + nums[Math.floor(nums.length/2)]) / 2
     }else{
         return nums[Math.floor(nums.length/2)]
     }
@@ -32,7 +32,6 @@ function mode(nums){
             bag[num] = 1
         }
         
-        console.log(bag[num])
 
         if(bag[num]===bag.highCount) bag.modes.push(num)
         if(bag[num]>bag.highCount){
