@@ -23,16 +23,12 @@ function mode(nums){
     }
 
     for(let num of nums){
-        console.log(num)
-        
-
         if(bag[num]) {
             bag[num]++
         }else{
             bag[num] = 1
         }
         
-
         if(bag[num]===bag.highCount) bag.modes.push(num)
         if(bag[num]>bag.highCount){
             bag.modes = []
