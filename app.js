@@ -1,16 +1,17 @@
 const express = require('express')
+const { mean, median, mode } = require('./helpers')
 
 const app = express()
 
 app.get('/mean', (req,res)=>{
     const nums = req.query.nums.split(',')
-    let sum = 0
     for(let x in nums){
         nums[x] = +nums[x]
-        sum += nums[x]
     }
 
-    res.send(`MEAN: ${sum/nums.length}`)
+    const m = mean(nums)
+
+    res.send(`MEAN: ${m}`)
 })
 
 app.get('/median',(req,res)=>{
@@ -18,13 +19,8 @@ app.get('/median',(req,res)=>{
     for(let x in nums){
         nums[x] = +nums[x]
     }
-    let median
-    if(nums.length%2 ==0){
-        median = (nums[Math.floor(nums.length/2)] + nums[Math.floor(nums.length/2)+1]) / 2
-    }else{
-        median = nums[Math.floor(nums.length/2)]
-    }
-    res.send(`${nums} - ${median}`)
+    const m = median()
+    res.send(`MEDIAN - ${m}`)
 })
 
 app.get('/mode',(req,res)=>{
@@ -33,33 +29,8 @@ app.get('/mode',(req,res)=>{
         nums[x] = +nums[x]
     }
 
-    let bag = {
-        modes:[],
-        highCount : 2
-    }
-
-    for(let num of nums){
-        console.log(num)
-        
-
-        if(bag[num]) {
-            bag[num]++
-        }else{
-            bag[num] = 1
-        }
-        
-        console.log(bag[num])
-
-        if(bag[num]===bag.highCount) bag.modes.push(num)
-        if(bag[num]>bag.highCount){
-            bag.modes = []
-            bag.modes.push(num)
-            bag.highCount = bag[num]
-        }
-    }
-
-    res.send(bag)
-    
+    const m = mode(nums)
+    res.send(`MODE: ${m}`)    
 })
 
 app.listen(3000, function(){
