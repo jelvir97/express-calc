@@ -8,10 +8,8 @@ app.get('/mean', (req,res)=>{
     for(let x in nums){
         nums[x] = +nums[x]
     }
-
     const m = mean(nums)
-
-    res.send(`MEAN: ${m}`)
+    res.json({operation:'mean', value:m})
 })
 
 app.get('/median',(req,res)=>{
@@ -19,8 +17,8 @@ app.get('/median',(req,res)=>{
     for(let x in nums){
         nums[x] = +nums[x]
     }
-    const m = median()
-    res.send(`MEDIAN - ${m}`)
+    const m = median(nums)
+    res.json({operation:'median', value:m})
 })
 
 app.get('/mode',(req,res)=>{
@@ -28,9 +26,8 @@ app.get('/mode',(req,res)=>{
     for(let x in nums){
         nums[x] = +nums[x]
     }
-
     const m = mode(nums)
-    res.send(`MODE: ${m}`)    
+    res.json({operation:'mode', value:m})    
 })
 
 app.listen(3000, function(){
